@@ -1,7 +1,7 @@
-const keyElements = document.querySelectorAll('.key');
+const keyElements = document.querySelectorAll('.key');      //Variabile che contiene tutti i tasti.
 console.log(keyElements);
 
-const notes = {
+const notes = {                                             //Elenco di tutti i suoni.
     do: '01-do.mp3',
     dodiesis: '02-dodiesis.mp3',
     re: '03-re.mp3',
@@ -16,16 +16,16 @@ const notes = {
     si: '12-si.mp3',
 }
 
-function playSound(key) {
-    const audioElement = new Audio();
-    const note = notes[key];
-    audioElement.src = 'sounds/' + note;
-    console.log(audioElement.src);
-    audioElement.play();
+function playSound(key) {                                   //Funzione chiama alla pressione di un tasto.
+    const audioElement = new Audio();                       //Crea una variabile che contiene un suono.
+    const note = notes[key];                                //Prende la nota associata al tasto premuto.   
+    audioElement.src = 'sounds/' + note;                    //Prende il file mp3 contenente quella nota.
+    console.log(audioElement.src);                          
+    audioElement.play();                                    //Riproduce il suono.
 }
 
-keyElements.forEach(function(keyElement) {
-    keyElement.addEventListener("click", function() {
+keyElements.forEach(function(keyElement) {                  //Per ogni tasto...
+    keyElement.addEventListener("click", function() {       //Associa la funzione "playSound(key)" alla pressione dei tasti.
         const key = keyElement.id;
         playSound(key);
     });
